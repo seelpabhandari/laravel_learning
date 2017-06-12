@@ -18,10 +18,10 @@ class CreateTagsTable extends Migration
             $table->string('name')->unique();
             $table->timestamps();
         });
-          Schema::create('tags', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->unique();
-            $table->timestamps();
+          Schema::create('task_tag', function (Blueprint $table) {
+            $table->integer('task_id');
+            $table->integer('tag_id');
+            $table->primary(['task_id','tag_id']);
         });
     }
 
@@ -33,5 +33,6 @@ class CreateTagsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('tags');
+        Schema::dropIfExists('task_tag');
     }
 }

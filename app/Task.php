@@ -43,4 +43,11 @@ class Task extends Model
         ->get()
         ->toArray();
      }
+
+     public function tags()
+     {
+        // any task may have many tags
+        //any tag may be applied to
+       return $this->belongsToMany(Tag::class);
+     }
 }
